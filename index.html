@@ -7,28 +7,101 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="container">
+  <div class="page">
+    <header class="navbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
+      </div>
 
-    <!-- Logo Section -->
-    <section class="logo-section">
-      <img src="assets/logo.png" alt="Karma Squad Logo" class="logo" />
-    </section>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
 
-    <!-- Content Section -->
-    <section class="content">
-      <h1>Coming Soon</h1>
-      <p>
-        Karma Squad is an event collective focused on unforgettable experiences.
-        We’re working behind the scenes to bring something special to life.
-      </p>
-      <span class="tagline">Events • Music • Culture</span>
-    </section>
+      <nav class="nav-links">
+        <button class="back-button" type="button">← Back</button>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="buy-tickets.html">Buy Tickets</a>
+        <a href="contact.html">Contact</a>
+        <a href="partners.html">Partners/Sponsors</a>
+      </nav>
+    </header>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <p>© 2025 Karma Squad Pty Ltd</p>
-    </footer>
+    <main>
+      <section class="hero" id="events">
+        <div class="poster-frame">
+          <div class="poster">
+            <span class="poster-tag">Next Event</span>
+            <div class="poster-graphic"></div>
+          </div>
+        </div>
 
+        <div class="hero-copy">
+          <p class="eyebrow">Next Event</p>
+          <h1>Laijau Malai – Australia Tour</h1>
+          <p class="lead">
+            Melbourne, get ready for a powerful live experience. Abhaya Subba &amp; The Steam Engines bring soulful vocals,
+            raw energy, and timeless Nepali music for one unforgettable night.
+            <br /><br />
+            <strong>Date:</strong> 16 February 2026 &nbsp; | &nbsp; <strong>Location:</strong> Melbourne
+          </p>
+          <button class="cta">Submit Interest</button>
+        </div>
+      </section>
+
+      <section class="video-section" id="video">
+        <div class="video-header">
+          <p class="eyebrow">Highlights</p>
+          <h2>Laijau Malai — Live Teaser</h2>
+          <p class="lead">Catch a glimpse of Abhaya Subba &amp; The Steam Engines bringing the energy live.</p>
+        </div>
+        <div class="video-embed">
+          <div class="responsive-frame">
+            <iframe src="https://www.youtube.com/embed/VUPl6edslZY?start=8" title="Laijau Malai live performance" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
   </main>
+
+  <footer class="footer" id="contact">
+    <p>© 2025 Karma Squad Pty Ltd</p>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const backButton = document.querySelector('.back-button');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    if (backButton) {
+      backButton.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle && navToggle.checked) {
+        navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    if (navToggle) {
+      navToggle.addEventListener('change', () => {
+        document.body.classList.toggle('nav-open', navToggle.checked);
+      });
+    }
+  </script>
+</div>
 </body>
 </html>

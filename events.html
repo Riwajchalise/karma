@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karma Squad | Events</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
+      </div>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-links">
+        <button class="back-button" type="button">← Back</button>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="buy-tickets.html">Buy Tickets</a>
+        <a href="contact.html">Contact</a>
+        <a href="partners.html">Partners/Sponsors</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="video-section">
+        <div class="video-header">
+          <p class="eyebrow">Events</p>
+          <h2>Events page</h2>
+          <p class="lead">Content coming soon.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <p>© 2025 Karma Squad Pty Ltd</p>
+    </footer>
+
+    <script>
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const backButton = document.querySelector('.back-button');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (navToggle) navToggle.checked = false;
+          document.body.classList.remove('nav-open');
+        });
+      });
+
+      if (backButton) {
+        backButton.addEventListener('click', () => {
+          if (navToggle) navToggle.checked = false;
+          document.body.classList.remove('nav-open');
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navToggle && navToggle.checked) {
+          navToggle.checked = false;
+          document.body.classList.remove('nav-open');
+        }
+      });
+
+      if (navToggle) {
+        navToggle.addEventListener('change', () => {
+          document.body.classList.toggle('nav-open', navToggle.checked);
+        });
+      }
+    </script>
+  </div>
+</body>
+</html>
