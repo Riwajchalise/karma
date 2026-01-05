@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% assign meta_title = page.title | default: site.title %}
+  {% assign meta_description = page.description | default: site.description %}
+  {% assign base_url = site.url | default: '' %}
+  {% assign meta_image = base_url | append: site.baseurl | append: '/assets/poster.webp' %}
+  <title>{{ meta_title }}</title>
+  <meta name="description" content="{{ meta_description }}" />
+  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ meta_title }}" />
+  <meta property="og:description" content="{{ meta_description }}" />
+  <meta property="og:image" content="{{ meta_image }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ meta_title }}" />
+  <meta name="twitter:description" content="{{ meta_description }}" />
+  <meta name="twitter:image" content="{{ meta_image }}" />
+  <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}" />
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="brand">
+        <img src="{{ '/assets/logo.png' | relative_url }}" alt="Karma Squad Logo" class="logo electric" />
+      </div>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-links">
+        <button class="back-button" type="button">← Back</button>
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/events.html' | relative_url }}">Events</a>
+        <a href="{{ '/buy-tickets.html' | relative_url }}">Buy Tickets</a>
+        <a href="{{ '/contact.html' | relative_url }}">Contact</a>
+        <a href="{{ '/partners.html' | relative_url }}">Partners/Sponsors</a>
+      </nav>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="footer" id="contact">
+      <p>© 2025 Karma Squad Pty Ltd</p>
+    </footer>
+  </div>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const backButton = document.querySelector('.back-button');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    if (backButton) {
+      backButton.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle && navToggle.checked) {
+        navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    if (navToggle) {
+      navToggle.addEventListener('change', () => {
+        document.body.classList.toggle('nav-open', navToggle.checked);
+      });
+    }
+  </script>
+</body>
+</html>

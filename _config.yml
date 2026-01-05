@@ -1,0 +1,8 @@
+title: Karma Squad Events
+description: Events and entertainment collective curating live shows, tours, and experiences
+markdown: kramdown
+url: https://karmagroup.com.au
+baseurl: ""
+collections:
+  events:
+    output: true

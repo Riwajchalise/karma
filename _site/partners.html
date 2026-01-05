@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  
+  
+  <title>Karma Squad | Partners & Sponsors</title>
+  <meta name="description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Karma Squad | Partners & Sponsors" />
+  <meta property="og:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta property="og:image" content="http://localhost:4000/assets/poster.webp" />
+  <meta property="og:site_name" content="Karma Squad Events" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Karma Squad | Partners & Sponsors" />
+  <meta name="twitter:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta name="twitter:image" content="http://localhost:4000/assets/poster.webp" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="brand">
+        <img src="/assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
+      </div>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-links">
+        <button class="back-button" type="button">← Back</button>
+        <a href="/">Home</a>
+        <a href="/events.html">Events</a>
+        <a href="/buy-tickets.html">Buy Tickets</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/partners.html">Partners/Sponsors</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-block">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Partners / Sponsors</p>
+      <h2>Aligned with KARMA</h2>
+      <p>We collaborate with brands that value cultural moments, premium hospitality, and production excellence.</p>
+    </div>
+    <button class="btn-secondary" type="button">Open partnership deck</button>
+  </div>
+
+  <div class="card-grid">
+    <article class="card">
+      <h3>Title Partnerships</h3>
+      <p>Lead the night with brand exclusivity, co-branded creative, and marquee placement across touchpoints.</p>
+    </article>
+    <article class="card">
+      <h3>Experience Sponsors</h3>
+      <p>Own lounges, arrivals, or backstage hospitality with curated service moments and measurable impact.</p>
+    </article>
+    <article class="card">
+      <h3>Product Integrations</h3>
+      <p>Authentic placements woven into the show—taste, sound, and visual integrations that feel native.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Partners</p>
+      <h2>Selected collaborators</h2>
+      <p>Trusted by hospitality, lifestyle, beverage, and tech brands for tailored event integrations.</p>
+    </div>
+  </div>
+  <div class="logo-grid">
+    <div class="logo-tile">Greyson Hotels</div>
+    <div class="logo-tile">Northlight Audio</div>
+    <div class="logo-tile">Aurora Spirits</div>
+    <div class="logo-tile">Halo Mobility</div>
+    <div class="logo-tile">Union Bank</div>
+    <div class="logo-tile">Framework Studio</div>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="footer" id="contact">
+      <p>© 2025 Karma Squad Pty Ltd</p>
+    </footer>
+  </div>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const backButton = document.querySelector('.back-button');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    if (backButton) {
+      backButton.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle && navToggle.checked) {
+        navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    if (navToggle) {
+      navToggle.addEventListener('change', () => {
+        document.body.classList.toggle('nav-open', navToggle.checked);
+      });
+    }
+  </script>
+</body>
+</html>

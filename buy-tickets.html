@@ -1,81 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karma Squad | Buy Tickets</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="page">
-    <header class="navbar">
-      <div class="brand">
-        <img src="assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
-      </div>
+---
+layout: default
+title: Karma Squad | Buy Tickets
+---
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
-      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
-      <nav class="nav-links">
-        <button class="back-button" type="button">← Back</button>
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="buy-tickets.html">Buy Tickets</a>
-        <a href="contact.html">Contact</a>
-        <a href="partners.html">Partners/Sponsors</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="video-section">
-        <div class="video-header">
-          <p class="eyebrow">Buy Tickets</p>
-          <h2>Ticketing</h2>
-          <p class="lead">Ticket purchase flow will be added here.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer" id="contact">
-      <p>© 2025 Karma Squad Pty Ltd</p>
-    </footer>
-
-    <script>
-      const navToggle = document.getElementById('nav-toggle');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const backButton = document.querySelector('.back-button');
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (navToggle) navToggle.checked = false;
-          document.body.classList.remove('nav-open');
-        });
-      });
-
-      if (backButton) {
-        backButton.addEventListener('click', () => {
-          if (navToggle) navToggle.checked = false;
-          document.body.classList.remove('nav-open');
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navToggle && navToggle.checked) {
-          navToggle.checked = false;
-          document.body.classList.remove('nav-open');
-        }
-      });
-
-      if (navToggle) {
-        navToggle.addEventListener('change', () => {
-          document.body.classList.toggle('nav-open', navToggle.checked);
-        });
-      }
-    </script>
+<section class="section-block">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Buy Tickets</p>
+      <h2>Secure your spot</h2>
+      <p>Choose your experience and lock in seats for upcoming KARMA productions.</p>
+    </div>
+    <button class="cta" type="button">Start ticket request</button>
   </div>
-</body>
-</html>
+
+  <div class="ticket-grid">
+    <article class="ticket-card">
+      <h3>General Admission</h3>
+      <div class="ticket-price">From $89</div>
+      <p>Floor access with premium audio, quick-scan entry, and merch priority.</p>
+      <button class="btn-secondary" type="button">Select GA</button>
+    </article>
+    <article class="ticket-card">
+      <h3>VIP Lounge</h3>
+      <div class="ticket-price">From $180</div>
+      <p>Reserved seating, lounge access, arrival concierge, and dedicated bar.</p>
+      <button class="btn-secondary" type="button">Select VIP</button>
+    </article>
+    <article class="ticket-card">
+      <h3>Hospitality Suite</h3>
+      <div class="ticket-price">On request</div>
+      <p>Private suite, chef-led service, artist meet-and-greet options, and host staff.</p>
+      <button class="btn-secondary" type="button">Enquire</button>
+    </article>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h2>Ticketing flow</h2>
+      <p>Straightforward steps with confirmation by email and SMS.</p>
+    </div>
+  </div>
+  <ul class="list-plain">
+    <li><span>Select event</span><span>Pick date, city, and preferred section</span></li>
+    <li><span>Choose tier</span><span>GA, VIP, or Hospitality—add-ons available</span></li>
+    <li><span>Confirm guests</span><span>Names, accessibility needs, and contact details</span></li>
+    <li><span>Payment</span><span>Secure checkout; instant receipt and QR codes</span></li>
+  </ul>
+</section>

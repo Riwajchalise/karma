@@ -1,0 +1,71 @@
+---
+layout: default
+---
+
+<section class="hero" id="event-hero">
+  <div class="poster-frame">
+    <div class="carousel is-static">
+      <div class="carousel-tag">KARMA Event</div>
+      <div class="carousel-track">
+        <figure class="carousel-slide is-active">
+          <img src="{{ page.poster | default: '/assets/poster.webp' | relative_url }}" alt="{{ page.title }} poster" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-copy">
+    <p class="eyebrow">Upcoming</p>
+    <h1>{{ page.title }}</h1>
+    <p class="lead">
+      {{ page.short_description | default: page.excerpt }}
+      <br /><br />
+      <strong>Date:</strong> {{ page.event_date | date: "%-d %B %Y" }} &nbsp; | &nbsp; <strong>Location:</strong> {{ page.city }}
+    </p>
+    <a class="cta" href="#enquiry">Enquire</a>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Details</p>
+      <h2>About the event</h2>
+    </div>
+    {% if page.capacity %}
+      <span class="pill">Capacity {{ page.capacity }}</span>
+    {% endif %}
+  </div>
+  <div class="card">
+    {{ content }}
+  </div>
+</section>
+
+<section class="section-block" id="enquiry">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Enquiry</p>
+      <h2>Request access</h2>
+      <p>Seats, VIP, suites, and media—tell us what you need and we’ll tailor your experience.</p>
+    </div>
+  </div>
+  <form class="contact-form contact-card">
+    <label class="field">
+      <span>Name</span>
+      <input type="text" name="name" placeholder="Your name" />
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input type="email" name="email" placeholder="you@example.com" />
+    </label>
+    <label class="field">
+      <span>Tickets/Access</span>
+      <input type="text" name="tickets" placeholder="GA, VIP, suite, media..." />
+    </label>
+    <label class="field">
+      <span>Message</span>
+      <textarea name="message" rows="4" placeholder="Group size, accessibility needs, timing"></textarea>
+    </label>
+    <button class="cta contact-submit" type="button">Send enquiry</button>
+  </form>
+</section>

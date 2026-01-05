@@ -1,25 +1,67 @@
----
-layout: default
-title: Karma Squad | Home
-permalink: /
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  
+  
+  <title>Karma Squad | Home</title>
+  <meta name="description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Karma Squad | Home" />
+  <meta property="og:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta property="og:image" content="http://localhost:4000/assets/poster.webp" />
+  <meta property="og:site_name" content="Karma Squad Events" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Karma Squad | Home" />
+  <meta name="twitter:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta name="twitter:image" content="http://localhost:4000/assets/poster.webp" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="brand">
+        <img src="/assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
+      </div>
 
-<section class="hero" id="events">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-links">
+        <button class="back-button" type="button">← Back</button>
+        <a href="/">Home</a>
+        <a href="/events.html">Events</a>
+        <a href="/buy-tickets.html">Buy Tickets</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/partners.html">Partners/Sponsors</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="events">
   <div class="poster-frame">
     <div class="carousel" data-carousel>
       <div class="carousel-tag">Next Event</div>
       <div class="carousel-track">
         <figure class="carousel-slide is-active">
-          <img src="{{ '/assets/slide1.webp' | relative_url }}" alt="Abhaya Subba &amp; The Steam Engines performing live" loading="lazy" />
+          <img src="/assets/slide1.webp" alt="Abhaya Subba &amp; The Steam Engines performing live" loading="lazy" />
         </figure>
         <figure class="carousel-slide">
-          <img src="{{ '/assets/slide2.webp' | relative_url }}" alt="Crowd enjoying Karma Squad event atmosphere" loading="lazy" />
+          <img src="/assets/slide2.webp" alt="Crowd enjoying Karma Squad event atmosphere" loading="lazy" />
         </figure>
         <figure class="carousel-slide">
-          <img src="{{ '/assets/slide3.webp' | relative_url }}" alt="Stage lighting and performance close-up" loading="lazy" />
+          <img src="/assets/slide3.webp" alt="Stage lighting and performance close-up" loading="lazy" />
         </figure>
         <figure class="carousel-slide">
-          <img src="{{ '/assets/slide4.webp' | relative_url }}" alt="Fans celebrating at a Karma Squad show" loading="lazy" />
+          <img src="/assets/slide4.webp" alt="Fans celebrating at a Karma Squad show" loading="lazy" />
         </figure>
       </div>
       <div class="carousel-dots" aria-label="Select slide">
@@ -125,3 +167,45 @@ permalink: /
     resetInterval();
   })();
 </script>
+
+    </main>
+
+    <footer class="footer" id="contact">
+      <p>© 2025 Karma Squad Pty Ltd</p>
+    </footer>
+  </div>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const backButton = document.querySelector('.back-button');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    if (backButton) {
+      backButton.addEventListener('click', () => {
+        if (navToggle) navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle && navToggle.checked) {
+        navToggle.checked = false;
+        document.body.classList.remove('nav-open');
+      }
+    });
+
+    if (navToggle) {
+      navToggle.addEventListener('change', () => {
+        document.body.classList.toggle('nav-open', navToggle.checked);
+      });
+    }
+  </script>
+</body>
+</html>

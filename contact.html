@@ -1,81 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karma Squad | Contact</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="page">
-    <header class="navbar">
-      <div class="brand">
-        <img src="assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
-      </div>
+---
+layout: default
+title: Karma Squad | Contact
+---
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
-      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
-      <nav class="nav-links">
-        <button class="back-button" type="button">← Back</button>
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="buy-tickets.html">Buy Tickets</a>
-        <a href="contact.html">Contact</a>
-        <a href="partners.html">Partners/Sponsors</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="video-section">
-        <div class="video-header">
-          <p class="eyebrow">Contact</p>
-          <h2>Get in touch</h2>
-          <p class="lead">Contact details coming soon.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer" id="contact">
-      <p>© 2025 Karma Squad Pty Ltd</p>
-    </footer>
-
-    <script>
-      const navToggle = document.getElementById('nav-toggle');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const backButton = document.querySelector('.back-button');
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (navToggle) navToggle.checked = false;
-          document.body.classList.remove('nav-open');
-        });
-      });
-
-      if (backButton) {
-        backButton.addEventListener('click', () => {
-          if (navToggle) navToggle.checked = false;
-          document.body.classList.remove('nav-open');
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navToggle && navToggle.checked) {
-          navToggle.checked = false;
-          document.body.classList.remove('nav-open');
-        }
-      });
-
-      if (navToggle) {
-        navToggle.addEventListener('change', () => {
-          document.body.classList.toggle('nav-open', navToggle.checked);
-        });
-      }
-    </script>
+<section class="section-block">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Connect with KARMA</h2>
+      <p>Bookings, partnerships, and media—tell us what you need and we’ll tailor a response within 24 hours.</p>
+    </div>
+    <button class="btn-secondary" type="button">Email us</button>
   </div>
-</body>
-</html>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>HQ</h3>
+      <p class="lead">Melbourne, AU — operating across ANZ.</p>
+      <div class="contact-meta">
+        <div>
+          <p class="meta-label">General</p>
+          <p class="meta-value">hello@karmagroup.com.au</p>
+        </div>
+        <div>
+          <p class="meta-label">Partnerships</p>
+          <p class="meta-value">partners@karmagroup.com.au</p>
+        </div>
+        <div>
+          <p class="meta-label">Phone</p>
+          <p class="meta-value">+61 3 5555 0133</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form contact-card">
+      <h3>Project details</h3>
+      <label class="field">
+        <span>Name</span>
+        <input type="text" name="name" placeholder="Your name" />
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" name="email" placeholder="you@example.com" />
+      </label>
+      <label class="field">
+        <span>What are you planning?</span>
+        <select name="project" aria-label="What are you planning?">
+          <option value="" selected disabled>Select one</option>
+          <option value="collabs">Collabs</option>
+          <option value="tickets">Tickets</option>
+          <option value="partnerships">Partnerships</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>Message</span>
+        <textarea name="message" rows="4" placeholder="Timeline, location, capacity, requirements"></textarea>
+      </label>
+      <button class="cta contact-submit" type="button">Send message</button>
+    </form>
+  </div>
+</section>
