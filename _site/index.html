@@ -180,6 +180,7 @@
 </label>
 <button class="cta contact-submit" type="submit">Send message</button>
 
+    <div class="form-status" id="contact-status" aria-live="polite"></div>
   </form>
 </section>
 
@@ -303,8 +304,22 @@
     // Contact form → Google Apps Script endpoint (replace URL below)
     (() => {
       const form = document.getElementById('contact-form');
+      const status = document.getElementById('contact-status');
       const endpoint = 'https://script.google.com/macros/s/AKfycbwp_L-HoJukz5KDzQhR2ECPWaAoHUct9AZ89a39h0ipbOJL3m6D0ONWcPuuW4s5GQKn/exec';
-      if (!form) return;
+      if (!form || !status) return;
+
+      const setStatus = (type, message, iconContent = '') => {
+        status.innerHTML = '';
+        const icon = document.createElement('span');
+        icon.className = `status-icon ${type === 'loading' ? 'status-loading' : type === 'success' ? 'status-success' : 'status-error'}`;
+        if (type === 'success') icon.textContent = iconContent || '✓';
+        status.appendChild(icon);
+        if (message) {
+          const text = document.createElement('span');
+          text.textContent = message;
+          status.appendChild(text);
+        }
+      };
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -312,6 +327,7 @@
         const payload = Object.fromEntries(formData.entries());
         payload.page = window.location.pathname;
 
+        setStatus('loading', 'Sending...');
         try {
           await fetch(endpoint, {
             method: 'POST',
@@ -320,9 +336,9 @@
             body: JSON.stringify(payload),
           });
           form.reset();
-          alert('Thanks! We received your message.');
+          setStatus('success', 'Submitted', '✓');
         } catch (err) {
-          alert('There was an issue sending your message. Please try again.');
+          setStatus('error', 'Could not send. Please try again.');
         }
       });
     })();

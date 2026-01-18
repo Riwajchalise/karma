@@ -470,6 +470,10 @@ a:hover {
   100% { opacity: 1; transform: translateX(0); }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes poster-electric {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.22), 0 0 32px rgba(255, 255, 255, 0.18);
@@ -755,6 +759,44 @@ h1 {
 
 .contact-card .meta-value {
   color: var(--text);
+}
+
+.form-status {
+  margin-top: 8px;
+  min-height: 28px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.status-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.status-loading {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+.status-success {
+  background: #1ac97f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b0b0b;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.status-error {
+  background: #ff5c5c;
 }
 
 .cta {
