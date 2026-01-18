@@ -273,33 +273,163 @@ a:hover {
   position: relative;
   overflow: hidden;
   margin: 10px 0 48px;
-  padding: 12px 0;
-  background: linear-gradient(90deg, rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.9));
-  border: 1px solid var(--surface-strong);
-  border-radius: 14px;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+  padding: 18px 14px;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.03), transparent 40%),
+    linear-gradient(90deg, rgba(20, 20, 20, 0.9), rgba(12, 12, 12, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+.brand-viewport {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 10px;
+}
+
+.brand-viewport::before,
+.brand-viewport::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.brand-viewport::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+
+.brand-viewport::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg), transparent);
 }
 
 .brand-track {
   display: flex;
-  gap: 22px;
-  animation: marquee 16s linear infinite;
-  padding: 0 16px;
+  gap: 18px;
+  animation: marquee 24s linear infinite;
   min-width: max-content;
+  align-items: stretch;
+}
+
+.sponsor-track {
+  margin-top: 20px;
+}
+
+.brand-row {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 28px 16px 16px;
+  background: rgba(255, 255, 255, 0.015);
+  display: flex;
+  align-items: center;
 }
 
 .brand-logo {
-  padding: 10px 18px;
-  border-radius: 12px;
-  border: 1px solid var(--surface-strong);
-  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text);
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-  filter: grayscale(1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  min-width: 210px;
+  min-height: 130px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+  animation: logo-fade 2.2s ease forwards;
 }
+
+.brand-logo img {
+  max-height: 72px;
+  max-width: 190px;
+  width: auto;
+  object-fit: contain;
+  opacity: 1;
+  transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.brand-caption {
+  font-size: 1.45rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+.title-row {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.12);
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row-label {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.sponsor-row {
+  position: relative;
+}
+
+.title-logo {
+  min-width: 240px;
+  min-height: 140px;
+  border: none;
+  background: transparent;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3), 0 0 34px rgba(255, 255, 255, 0.14);
+  animation: title-glow 5s ease-in-out infinite;
+  margin: 20px auto 0;
+}
+
+.title-logo img {
+  max-height: 72px;
+  max-width: 200px;
+}
+
+.title-caption {
+  font-size: 1.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brand-logo:hover,
+.brand-logo img:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.brand-logo:nth-child(2) { animation-delay: 0.12s; }
+.brand-logo:nth-child(3) { animation-delay: 0.24s; }
+.brand-logo:nth-child(4) { animation-delay: 0.36s; }
+.brand-logo:nth-child(5) { animation-delay: 0.48s; }
+.brand-logo:nth-child(6) { animation-delay: 0.6s; }
+.brand-logo:nth-child(7) { animation-delay: 0.72s; }
+.brand-logo:nth-child(8) { animation-delay: 0.84s; }
 
 .brand-ribbon:hover .brand-track {
   animation-play-state: paused;
@@ -308,6 +438,36 @@ a:hover {
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes logo-fade {
+  0% { opacity: 0; transform: translateY(6px); }
+  20% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes title-glow {
+  0% { box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26), 0 0 30px rgba(255, 255, 255, 0.12); }
+  50% { box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3), 0 0 42px rgba(255, 255, 255, 0.2); }
+  100% { box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26), 0 0 30px rgba(255, 255, 255, 0.12); }
+}
+
+@keyframes cta-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28), 0 12px 30px rgba(0, 0, 0, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.08), 0 16px 36px rgba(0, 0, 0, 0.42); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28), 0 12px 30px rgba(0, 0, 0, 0.35); }
+}
+
+@keyframes cta-pop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.96); }
+  60% { opacity: 1; transform: translateY(-2px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes cta-slide-in {
+  0% { opacity: 0; transform: translateX(18px); }
+  60% { opacity: 1; transform: translateX(-2px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes poster-electric {
@@ -603,21 +763,23 @@ h1 {
   padding: 14px 18px;
   border-radius: 12px;
   border: 1px solid transparent;
-  background: #ffffff;
+  background: linear-gradient(120deg, #ffffff, #dcdcdc);
+  background-size: 200% 200%;
   color: #0b0b0b;
   font-weight: 700;
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: var(--glow);
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background-position 3s ease, color 0.2s ease;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28), 0 12px 30px rgba(0, 0, 0, 0.35);
+  animation: cta-pulse 3s ease-in-out infinite, cta-pop 0.8s ease-out 0.2s both, cta-slide-in 0.9s ease-out 0.1s both;
 }
 
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4), 0 0 0 6px rgba(255, 255, 255, 0.12);
   border-color: var(--border);
-  background: var(--hover);
-  color: var(--text);
+  background: linear-gradient(120deg, #ffffff, #f7f7f7);
+  color: #0b0b0b;
 }
 
 .cta:active {
@@ -777,11 +939,65 @@ h1 {
 
 .footer {
   margin-top: 48px;
-  font-size: 0.9rem;
+  padding: 24px 0 12px;
+  font-size: 0.95rem;
   color: var(--muted);
-  text-align: center;
+  display: grid;
+  gap: 14px;
+  border-top: 1px solid var(--surface-strong);
 }
 
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 120px;
+  filter: grayscale(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.25));
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-links a {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--surface-strong);
+  background: var(--surface);
+  align-items: center;
+  justify-content: center;
+  transition: border 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-links a svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text);
+}
+
+.social-links a:hover {
+  border-color: var(--border);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.footer-note {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
 @keyframes electric-flicker {
   0% { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.18)) brightness(1); }
   20% { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.5)) brightness(1.05); }

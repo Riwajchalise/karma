@@ -40,7 +40,39 @@ permalink: /
       <br /><br />
       <strong>Date:</strong> 16 February 2026 &nbsp; | &nbsp; <strong>Location:</strong> Melbourne
     </p>
-    <button class="cta">Submit Interest</button>
+    <button class="cta">Buy Ticket</button>
+  </div>
+</section>
+
+<section class="brand-ribbon" aria-label="Partners and sponsors">
+  <div class="brand-viewport">
+    <div class="brand-row title-row">
+      <div class="row-label">Title Sponsor</div>
+      <div class="brand-logo title-logo">
+        <img src="{{ '/assets/iexcel-logo.png' | relative_url }}" alt="Title sponsor - iExcel" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="brand-row sponsor-row">
+      <div class="row-label">Sponsors</div>
+      <div class="brand-track sponsor-track" data-brand-track>
+        <div class="brand-logo">
+          <img src="{{ '/assets/Himal.png' | relative_url }}" alt="Sponsor - Himal" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="{{ '/assets/Nameste-remit.png' | relative_url }}" alt="Sponsor - Namaste Remittance" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="{{ '/assets/Saira.png' | relative_url }}" alt="Sponsor - Saira Global" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="{{ '/assets/Basantapur.png' | relative_url }}" alt="Sponsor - Basantapur Square" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="{{ '/assets/Sultan.png' | relative_url }}" alt="Sponsor - Nepalese Sultan" loading="lazy" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -57,38 +89,7 @@ permalink: /
   </div>
 </section>
 
-<section class="contact-section contact-two-col" id="contact">
-  <div class="contact-header">
-    <p class="eyebrow">Contact</p>
-    <h2>Say hello</h2>
-    <p class="lead">Share your details and what you’re looking for—collabs, tickets, or partnerships.</p>
-    <div class="contact-meta">
-      <div>
-        <p class="meta-label">Email</p>
-        <p class="meta-value">hello@karmagroup.com.au</p>
-      </div>
-      <div>
-        <p class="meta-label">City</p>
-        <p class="meta-value">Melbourne, AU</p>
-      </div>
-    </div>
-  </div>
-  <form class="contact-form">
-    <label class="field">
-      <span>Name</span>
-      <input type="text" name="name" placeholder="Your name" />
-    </label>
-    <label class="field">
-      <span>Email</span>
-      <input type="email" name="email" placeholder="you@example.com" />
-    </label>
-    <label class="field">
-      <span>Message</span>
-      <textarea name="message" rows="4" placeholder="What’s on your mind?"></textarea>
-    </label>
-    <button type="button" class="cta contact-submit">Send</button>
-  </form>
-</section>
+{% include contact-section.html %}
 
 <script>
   (() => {
@@ -123,5 +124,15 @@ permalink: /
     });
 
     resetInterval();
+  })();
+
+  (() => {
+    const tracks = document.querySelectorAll('[data-brand-track]');
+    if (!tracks.length) return;
+
+    tracks.forEach(track => {
+      const clone = track.innerHTML;
+      track.insertAdjacentHTML('beforeend', clone);
+    });
   })();
 </script>

@@ -7,43 +7,48 @@
   
   
   
+  
   <title>Karma Squad | Home</title>
   <meta name="description" content="Events and entertainment collective curating live shows, tours, and experiences" />
-  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne" />
+  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne, Abhaya Subba, Australia tour, Nepali music, Melbourne concerts" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Karma Squad | Home" />
   <meta property="og:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
   <meta property="og:image" content="http://localhost:4000/assets/poster.webp" />
+  <meta property="og:url" content="http://localhost:4000/" />
   <meta property="og:site_name" content="Karma Squad Events" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Karma Squad | Home" />
   <meta name="twitter:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
   <meta name="twitter:image" content="http://localhost:4000/assets/poster.webp" />
+  <link rel="canonical" href="http://localhost:4000/" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <div class="page">
     <header class="navbar">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
-      </div>
+  <div class="brand">
+    <img src="/assets/logo.png" alt="Karma Squad Logo" class="logo electric" />
+  </div>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
-      <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
+  <label for="nav-toggle" class="menu-toggle" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
 
-      <nav class="nav-links">
-        <button class="back-button" type="button">← Back</button>
-        <a href="/">Home</a>
-        <a href="/events.html">Events</a>
-        <a href="/buy-tickets.html">Buy Tickets</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/partners.html">Partners/Sponsors</a>
-      </nav>
-    </header>
+  <nav class="nav-links">
+    <button class="back-button" type="button">← Back</button>
+    <a href="/">Home</a>
+    <a href="/events.html">Events</a>
+    <a href="/buy-tickets.html">Buy Tickets</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/partners.html">Partners/Sponsors</a>
+  </nav>
+</header>
+
 
     <main>
       <section class="hero" id="events">
@@ -82,7 +87,39 @@
       <br /><br />
       <strong>Date:</strong> 16 February 2026 &nbsp; | &nbsp; <strong>Location:</strong> Melbourne
     </p>
-    <button class="cta">Submit Interest</button>
+    <button class="cta">Buy Ticket</button>
+  </div>
+</section>
+
+<section class="brand-ribbon" aria-label="Partners and sponsors">
+  <div class="brand-viewport">
+    <div class="brand-row title-row">
+      <div class="row-label">Title Sponsor</div>
+      <div class="brand-logo title-logo">
+        <img src="/assets/iexcel-logo.png" alt="Title sponsor - iExcel" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="brand-row sponsor-row">
+      <div class="row-label">Sponsors</div>
+      <div class="brand-track sponsor-track" data-brand-track>
+        <div class="brand-logo">
+          <img src="/assets/Himal.png" alt="Sponsor - Himal" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="/assets/Nameste-remit.png" alt="Sponsor - Namaste Remittance" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="/assets/Saira.png" alt="Sponsor - Saira Global" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="/assets/Basantapur.png" alt="Sponsor - Basantapur Square" loading="lazy" />
+        </div>
+        <div class="brand-logo">
+          <img src="/assets/Sultan.png" alt="Sponsor - Nepalese Sultan" loading="lazy" />
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -107,30 +144,45 @@
     <div class="contact-meta">
       <div>
         <p class="meta-label">Email</p>
-        <p class="meta-value">hello@karmagroup.com.au</p>
+        <p class="meta-value">contactkarmagroup@gmail.com</p>
       </div>
       <div>
         <p class="meta-label">City</p>
         <p class="meta-value">Melbourne, AU</p>
       </div>
+      <div>
+        <p class="meta-label">Phone</p>
+        <p class="meta-value">0449 969 008</p>
+      </div>
     </div>
   </div>
   <form class="contact-form">
     <label class="field">
-      <span>Name</span>
-      <input type="text" name="name" placeholder="Your name" />
-    </label>
-    <label class="field">
-      <span>Email</span>
-      <input type="email" name="email" placeholder="you@example.com" />
-    </label>
-    <label class="field">
-      <span>Message</span>
-      <textarea name="message" rows="4" placeholder="What’s on your mind?"></textarea>
-    </label>
-    <button type="button" class="cta contact-submit">Send</button>
+  <span>Name</span>
+  <input type="text" name="name" placeholder="Your name" />
+</label>
+<label class="field">
+  <span>Email</span>
+  <input type="email" name="email" placeholder="you@example.com" />
+</label>
+<label class="field">
+  <span>What are you planning?</span>
+  <select name="project" aria-label="What are you planning?">
+    <option value="" selected disabled>Select one</option>
+    <option value="collabs">Collabs</option>
+    <option value="tickets">Tickets</option>
+    <option value="partnerships">Partnerships</option>
+  </select>
+</label>
+<label class="field">
+  <span>Message</span>
+  <textarea name="message" rows="4" placeholder="Timeline, location, capacity, requirements"></textarea>
+</label>
+<button class="cta contact-submit" type="button">Send message</button>
+
   </form>
 </section>
+
 
 <script>
   (() => {
@@ -166,13 +218,54 @@
 
     resetInterval();
   })();
+
+  (() => {
+    const tracks = document.querySelectorAll('[data-brand-track]');
+    if (!tracks.length) return;
+
+    tracks.forEach(track => {
+      const clone = track.innerHTML;
+      track.insertAdjacentHTML('beforeend', clone);
+    });
+  })();
 </script>
 
     </main>
 
     <footer class="footer" id="contact">
-      <p>© 2025 Karma Squad Pty Ltd</p>
-    </footer>
+  <div class="footer-brand">
+    <img src="/assets/logo.png" alt="Karma Group logo" class="logo footer-logo" />
+    <p>Premium events and experiences by KARMA.</p>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <p class="meta-label">Email</p>
+      <p class="meta-value">contactkarmagroup@gmail.com</p>
+      <p class="meta-label">Partnerships</p>
+      <p class="meta-value">contactkarmagroup@gmail.com</p>
+    </div>
+    <div>
+      <p class="meta-label">HQ</p>
+      <p class="meta-value">Melbourne, AU</p>
+      <p class="meta-label">Phone</p>
+      <p class="meta-value">0449 969 008</p>
+    </div>
+    <div>
+      <p class="meta-label">Follow</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/karmagroupaustralia?igsh=djlvaW5pNnlsMTli" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 3.5A3.5 3.5 0 1 1 8.5 12 3.5 3.5 0 0 1 12 8.5zm0 2A1.5 1.5 0 1 0 13.5 12 1.5 1.5 0 0 0 12 10.5zm4.75-4.75a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="meta-label">Hours</p>
+      <p class="meta-value">Mon–Fri, 9am–6pm</p>
+    </div>
+  </div>
+  <p class="footer-note">© 2025 Karma Group Pty Ltd</p>
+</footer>
+
   </div>
 
   <script>
