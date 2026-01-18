@@ -9,17 +9,17 @@
   
   
   <title>Karma Squad | Home</title>
-  <meta name="description" content="Events and entertainment collective curating live shows, tours, and experiences" />
-  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne, Abhaya Subba, Australia tour, Nepali music, Melbourne concerts" />
+  <meta name="description" content="Abhaya Subba &amp; The Steam Engines live in Melbourne, Australia — buy tickets and catch the Australia tour powered by KARMA Group." />
+  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne, Abhaya Subba, Abhaya &amp; The Steam Engines, Abhaya Subba Melbourne, Abhaya Australia show, Nepali music Australia, Melbourne concerts, live Nepali music" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Karma Squad | Home" />
-  <meta property="og:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta property="og:description" content="Abhaya Subba &amp; The Steam Engines live in Melbourne, Australia — buy tickets and catch the Australia tour powered by KARMA Group." />
   <meta property="og:image" content="http://localhost:4000/assets/poster.webp" />
   <meta property="og:url" content="http://localhost:4000/" />
   <meta property="og:site_name" content="Karma Squad Events" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Karma Squad | Home" />
-  <meta name="twitter:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
+  <meta name="twitter:description" content="Abhaya Subba &amp; The Steam Engines live in Melbourne, Australia — buy tickets and catch the Australia tour powered by KARMA Group." />
   <meta name="twitter:image" content="http://localhost:4000/assets/poster.webp" />
   <link rel="canonical" href="http://localhost:4000/" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
@@ -156,7 +156,7 @@
       </div>
     </div>
   </div>
-  <form class="contact-form">
+  <form class="contact-form" id="contact-form">
     <label class="field">
   <span>Name</span>
   <input type="text" name="name" placeholder="Your name" />
@@ -178,7 +178,7 @@
   <span>Message</span>
   <textarea name="message" rows="4" placeholder="Timeline, location, capacity, requirements"></textarea>
 </label>
-<button class="cta contact-submit" type="button">Send message</button>
+<button class="cta contact-submit" type="submit">Send message</button>
 
   </form>
 </section>
@@ -299,6 +299,33 @@
         document.body.classList.toggle('nav-open', navToggle.checked);
       });
     }
+
+    // Contact form → Google Apps Script endpoint (replace URL below)
+    (() => {
+      const form = document.getElementById('contact-form');
+      const endpoint = 'https://script.google.com/macros/s/AKfycbwp_L-HoJukz5KDzQhR2ECPWaAoHUct9AZ89a39h0ipbOJL3m6D0ONWcPuuW4s5GQKn/exec';
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+        payload.page = window.location.pathname;
+
+        try {
+          await fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          form.reset();
+          alert('Thanks! We received your message.');
+        } catch (err) {
+          alert('There was an issue sending your message. Please try again.');
+        }
+      });
+    })();
   </script>
 </body>
 </html>

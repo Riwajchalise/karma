@@ -10,7 +10,7 @@
   
   <title>Karma Squad | Contact</title>
   <meta name="description" content="Events and entertainment collective curating live shows, tours, and experiences" />
-  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne, Abhaya Subba, Australia tour, Nepali music, Melbourne concerts" />
+  <meta name="keywords" content="Karma Squad, events, entertainment, tours, live shows, concerts, Melbourne, Abhaya Subba, Abhaya &amp; The Steam Engines, Abhaya Subba Melbourne, Abhaya Australia show, Nepali music Australia, Melbourne concerts, live Nepali music" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Karma Squad | Contact" />
   <meta property="og:description" content="Events and entertainment collective curating live shows, tours, and experiences" />
@@ -121,6 +121,33 @@
         document.body.classList.toggle('nav-open', navToggle.checked);
       });
     }
+
+    // Contact form → Google Apps Script endpoint (replace URL below)
+    (() => {
+      const form = document.getElementById('contact-form');
+      const endpoint = 'https://script.google.com/macros/s/AKfycbwp_L-HoJukz5KDzQhR2ECPWaAoHUct9AZ89a39h0ipbOJL3m6D0ONWcPuuW4s5GQKn/exec';
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+        payload.page = window.location.pathname;
+
+        try {
+          await fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          form.reset();
+          alert('Thanks! We received your message.');
+        } catch (err) {
+          alert('There was an issue sending your message. Please try again.');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
