@@ -1,0 +1,220 @@
+---
+layout: default
+title: Karma Squad | Register
+description: Register your details for upcoming Karma Squad events in Melbourne.
+permalink: /form
+---
+
+<style>
+  .reg-wrap {
+    width: 100%;
+    max-width: 480px;
+    margin: 40px auto 64px;
+    padding: 0 8px;
+  }
+
+  .reg-heading {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .reg-heading .eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .reg-heading h1 {
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .reg-heading p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .reg-form .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .reg-form .field span {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .reg-form .field input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--surface-strong);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 16px; /* prevents iOS auto-zoom */
+    font-family: inherit;
+    line-height: 1.4;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .reg-form .field input::placeholder {
+    color: var(--muted);
+  }
+
+  .reg-form .field input:focus {
+    outline: none;
+    border-color: var(--border);
+    box-shadow: 0 0 0 3px rgba(191, 191, 191, 0.25);
+  }
+
+  .reg-btn {
+    width: 100%;
+    margin-top: 4px;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(120deg, #ffffff, #dcdcdc);
+    color: #0b0b0b;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .reg-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .reg-btn:active {
+    transform: translateY(0);
+  }
+
+  .reg-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .reg-status {
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    color: var(--muted);
+    padding: 4px 0;
+  }
+
+  .reg-status .status-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+  }
+
+  .reg-status .status-loading {
+    border: 2px solid rgba(255,255,255,0.25);
+    border-top-color: #fff;
+    animation: spin 0.7s linear infinite;
+  }
+
+  .reg-status .status-success {
+    background: #1ac97f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b0b0b;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .reg-status .status-error {
+    background: #ff5c5c;
+  }
+</style>
+
+<div class="reg-wrap">
+  <div class="reg-heading">
+    <p class="eyebrow">Event Registration</p>
+    <h1>Register now</h1>
+    <p>Save your spot for upcoming Karma Squad events.</p>
+  </div>
+
+  <form class="reg-form" id="reg-form" novalidate>
+    <label class="field">
+      <span>Full name</span>
+      <input type="text" name="name" placeholder="Your name" required minlength="2"
+             autocomplete="name" inputmode="text" />
+    </label>
+    <label class="field">
+      <span>Phone</span>
+      <input type="tel" name="phone" placeholder="+61 400 000 000" required
+             autocomplete="tel" inputmode="tel" />
+    </label>
+    <label class="field">
+      <span>Email</span>
+      <input type="email" name="email" placeholder="you@example.com" required
+             autocomplete="email" inputmode="email" />
+    </label>
+    <button class="reg-btn" type="submit" id="reg-btn">Register now</button>
+    <div class="reg-status" id="reg-status" aria-live="polite"></div>
+  </form>
+</div>
+
+<script>
+  (() => {
+    const form = document.getElementById('reg-form');
+    const btn = document.getElementById('reg-btn');
+    const status = document.getElementById('reg-status');
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwZTyPpZSUqNdDmlamp04mss7SHfa8q293r6T_81_oCUQYHVZhN_rnm3v7XJG1SE_N8/exec';
+
+    const setStatus = (type, message) => {
+      status.innerHTML = '';
+      const icon = document.createElement('span');
+      icon.className = 'status-icon status-' + type;
+      if (type === 'success') icon.textContent = '✓';
+      status.appendChild(icon);
+      const text = document.createElement('span');
+      text.textContent = message;
+      status.appendChild(text);
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      btn.disabled = true;
+      setStatus('loading', 'Registering…');
+
+      try {
+        await fetch(ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        form.reset();
+        setStatus('success', 'Registered! We\'ll be in touch.');
+      } catch {
+        setStatus('error', 'Could not register. Please try again.');
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>
